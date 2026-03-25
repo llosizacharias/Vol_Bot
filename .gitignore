@@ -1,0 +1,22 @@
+# Credenciais — NUNCA commitar
+.env
+
+# Estado do bot em produção
+vol_state.json
+
+# Logs
+logs/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+venv/
+.venv/
+
+# Resultados de backtest (opcionais, pesados)
+backtest_results.csv
+backtest_results.png
+
+# VSCode
+.vscode/
