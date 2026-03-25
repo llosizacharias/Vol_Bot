@@ -299,7 +299,10 @@ def get_most_volatile_symbol(state: dict) -> str | None:
         # Cooldown check
         last_exit = state.get("last_exit_ts", {}).get(symbol)
         if last_exit:
-            last_exit_dt = datetime.datetime.fromisoformat(str(last_exit))
+            try:
+                last_exit_dt = datetime.datetime.fromisoformat(str(last_exit))
+            except ValueError:
+                last_exit_dt = datetime.datetime.utcfromtimestamp(float(last_exit))
             hours_since  = (now_ts - last_exit_dt).total_seconds() / 3600
             if hours_since < COOLDOWN_HOURS:
                 continue
